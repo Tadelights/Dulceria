@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadeo's crunchy delights - Servicios de Dulcería</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #4B4B4B;
+            color: #5F9EA0;
+            padding: 1rem;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-right: 1rem;
+        }
+        .header-content {
+            flex-grow: 1;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4B4B4B;
+            padding: 0.5rem 1rem;
+        }
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #ff69b4;
+            color: #4B4B4B;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ff69b4;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .service {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: calc(33.33% - 2rem);
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .service h3 {
+            color: #5F9EA0;
+            margin-bottom: 1rem;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .service {
+                width: calc(50% - 2rem);
+            }
+            .nav-container {
+                flex-direction: column;
+            }
+            nav {
+                margin-bottom: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .service {
+                width: 100%;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+        /* ... (Estilos Contacto) ... */
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .contact-item {
+            text-align: center;
+            flex: 1;
+        }
+        .contact-item i {
+            font-size: 2rem;
+            color: #5F9EA0;
+            margin-bottom: 0.5rem;
+        }
+        .contact-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        .contact-item p {
+            margin: 0;
+            color: #666;
+        }
+        .contact-container {
+            display: flex;
+            gap: 2rem;
+        }
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+            }
+            .contact-item {
+                margin-bottom: 1rem;
+            }
+            .contact-container {
+                flex-direction: column;
+            }
+
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #5F9EA0;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <img src="logo.jpg" alt="Logo de Tadeo's crunchy delights" class="logo">
+            <div class="header-content">
+                <h1>Tadeo's crunchy delights</h1>
+                <p>Endulzamos tus momentos especiales</p>
+            </div>
+        </div>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="nav-link" data-section="inicio">Inicio</a></li>
+                    <li><a href="#productos" class="nav-link" data-section="productos">Productos</a></li>
+                    <li><a href="#servicios" class="nav-link" data-section="servicios">Servicios</a></li>
+                    <li><a href="#sobre-nosotros" class="nav-link" data-section="sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/Ec36E5DV42Zc2Dav/?mibextid=qi2Omg" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/tadeos_crunchy_delights?igsh=azM5bHp3cHZuNnl5" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/YourWhatsAppNumber" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="inicio" class="section active">
+            <h2>Bienvenidos a Tadeo's crunchy delights</h2>
+            <p>Descubre nuestro mundo de dulces y delicias.</p>
+        </section>
+        
+        <section id="productos" class="section">
+            <h2>Nuestros Productos</h2>
+            <p>Aquí puedes agregar información sobre tus productos.</p>
+        </section>
+        
+        <section id="servicios" class="section">
+            <h2>Nuestros Servicios</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Estación de Dulces</h3>
+                    <p>Gran variedad de dulces para todos los gustos. Perfecta para eventos y celebraciones.</p>
+                </div>
+                <div class="service">
+                    <h3>Tabla de Quesos</h3>
+                    <p>Perfecto detalle y frescura de quesos. Ideal para complementar cualquier ocasión especial.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sobre-nosotros" class="section">
+            <h2>Sobre Nosotros</h2>
+            <p>En tadeo's crunchy delights , llevamos la felicidad a donde quiera que vayas. Somos tu mejor opción para disfrutar de los snacks más deliciosos y variados, perfectos para cualquier ocasión: desde una tarde en el parque hasta un evento especial...</p>
+        </section>
+        
+        <section id="contacto" class="section">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Dirección</h3>
+                    <p>Fernando Montes de Oca, Cuatitlan Izcalli, Estado de Mexico</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Teléfono</h3>
+                    <p>(+56) 56-65-80-49</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>tadeoscrunchydelights@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <h3>Envíanos un mensaje</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7516.822086929514!2d-99.19579481867142!3d19.609717164937766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1727200413409!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('data-section');
+                    
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
